@@ -1,0 +1,61 @@
+    this.resetTitle = createElement("h2");
+    this.resetButton = createButton("");
+-------------------------------------------------------
+   this.resetTitle.html("Reiniciar juego"); 
+   this.resetTitle.class("resetText");
+   this.resetTitle.position(width / 2 + 200, 40);
+   this.resetButton.class("resetButton");
+   this.resetButton.position(width / 2 + 230, 100);
+----------------------------------------------------------
+.resetButton {
+  width:60px;
+  height:60px;
+  background-image: url('./assets/reset.png');
+  background-size: cover;
+  border-radius: 30px;
+  display: inline-block;
+  cursor: pointer;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+  outline: none;
+}
+
+.resetText{
+  font-size: 25px;
+  color: white;
+  font-family: vollkorn;
+  text-align: center;
+  text-shadow: -1px 1px 0 #ff1744,
+                1px 1px 0 #ff1744,
+                1px -1px 0 #ff1744,
+                -1px -1px 0 #ff1744;
+}
+
+.leadersText{
+  font-size: 20px;
+  color: white;
+  font-family: vollkorn;
+  text-align: center;
+}
+-----------------------------------------------------------------------
+  handleResetButton() {
+    this.resetButton.mousePressed(() => {
+      database.ref("/").set({
+        playerCount: 0,
+        gameState: 0,
+        players: {}
+      });
+      window.location.reload();
+    });
+  }
+-----------------------------------------------------------------------------
+    if (keyIsDown(LEFT_ARROW) && player.positionX > width / 3 - 50) {
+      player.positionX -= 5;
+      player.update();
+    }
+    if (keyIsDown(RIGHT_ARROW) && player.positionX < width / 2 + 300) {
+      player.positionX += 5;
+      player.update();
+    }
+----------------------------------------------------------------------------------
+   
